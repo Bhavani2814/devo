@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <sonar.host.url>http://13.48.44.61:9000/</sonar.host.url>
+    <sonar.host.url>http://172.31.35.39:9000/</sonar.host.url>
   </properties>
 
   <dependencies>
@@ -32,9 +32,8 @@
   <build>
     <finalName>home_lone</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        
-        <artifactId>sonar-maven-plugin</artifactId>
+      <plugin>
+          <artifactId>sonar-maven-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
         <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
