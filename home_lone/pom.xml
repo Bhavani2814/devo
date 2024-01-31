@@ -31,14 +31,14 @@
   <distributionManagement>
 		 <snapshotRepository>
 		    <id>nexusRepo</id>
-		    <url>http://51.20.140.253:8081/repository/sample-snapshot/</url>
-		    <url>http://51.20.140.253:8081/repository/sample-snapshot/</url>
+		    <url>http://51.20.144.226:8081/repository/sample-snapshot/</url>
+		    <url>http://51.20.144.226:8081/repository/sample-snapshot/</url>
 		 </snapshotRepository>
 
 		 <repository>
 		    <id>nexusRepo</id>
-		    <url>http://51.20.140.253:8081/repository/sample-release/</url>
-		    <url>http://51.20.140.253:8081/repository/sample-release/</url>
+		    <url>http://51.20.144.226:8081/repository/sample-release/</url>
+		    <url>http://51.20.144.226:8081/repository/sample-release/</url>
 		 </repository>
   </distributionManagement>
 
