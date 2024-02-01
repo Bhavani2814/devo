@@ -21,13 +21,13 @@ pipeline{
         stage("articat Uploder using Nexus"){
             steps{
                 nexusArtifactUploader artifacts: [[artifactId: 'home_lone', classifier: '', file: '/var/lib/jenkins/workspace/pipeline/home_lone/target/home_lone.war', type: 'war']],
-                 credentialsId: 'nexus 3', 
+                credentialsId: '', 
                  groupId: 'sbi',
-                  nexusUrl: '172.31.27.27:8081',
-                   nexusVersion: 'nexus3', 
-                   protocol: 'http',
-                    repository: 'sample-snapshot', 
-                    version: '1.0-SNAPSHOT'
+                 nexusUrl: '172.31.27.27:8081',
+                 nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: 'sample-snapshot',
+                version: '1.0-SNAPSHOT'
             }
         }
 
