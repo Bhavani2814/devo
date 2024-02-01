@@ -33,7 +33,7 @@ pipeline{
 
         stage("deploy to war in Tomcat"){
             steps{
-                sshagent(['tomcat']) {
+                sshagent(['ansible']) {
                     sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline/home_lone/target/home_lone.war ec2-user@16.171.155.210:/home/ec2-user/tomcat-9/home_lone/'
                 }
             }
