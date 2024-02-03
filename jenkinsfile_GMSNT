@@ -7,8 +7,8 @@ pipeline{
 
     stages{
         stage("Git clone form Github"){
-            steps{
-                git branch: 'main', credentialsId: '7ec2db43-942f-4659-96f7-e6f7dd09e832', url: 'https://github.com/Bhavani2814/devo.git'
+            steps{ 
+                 git branch: 'main', credentialsId: '7ec2db43-942f-4659-96f7-e6f7dd09e832', url: 'https://github.com/Bhavani2814/devo.git'
             }
         }
 
