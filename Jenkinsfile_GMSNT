@@ -1,42 +1,23 @@
-pipeline{
+pipeline {
     agent any
 
-    environment{
-        PATH= "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven/bin:$PATH"
+    environment {
+        PATH = "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven/bin:$PATH"
+        // Add other environment variables if needed
     }
 
-    stages{
-        stage("Git clone form Github"){
-            steps{ 
-                 git branch: 'main', credentialsId: '7ec2db43-942f-4659-96f7-e6f7dd09e832', url: 'https://github.com/Bhavani2814/devo.git'
+    stages {
+        stage("Git clone from Github") {
+            steps {
+                git branch: 'main', credentialsId: '7ec2db43-942f-4659-96f7-e6f7dd09e832', url: 'https://github.com/Bhavani2814/devo.git'
             }
         }
 
-        stage("maven build & sonar scan"){
-            steps{
+        stage("Maven build & Sonar scan") {
+            steps {
                 sh 'mvn -f /var/lib/jenkins/workspace/pipeline/home_lone/pom.xml clean sonar:sonar package'
             }
         }
-
-        stage("articat Uploder using Nexus"){
-            steps{
-                nexusArtifactUploader artifacts: [[artifactId: 'home_lone', classifier: '', file: '/var/lib/jenkins/workspace/pipeline/home_lone/target/home_lone.war', type: 'war']],
-                credentialsId: '', 
-                 groupId: 'sbi',
-                 nexusUrl: '172.31.27.27:8081',
-                 nexusVersion: 'nexus3',
-                protocol: 'http',
-                repository: 'sample-snapshot',
-                version: '1.0-SNAPSHOT'
-            }
-        }
-
-        stage("deploy to war in Tomcat"){
-            steps{
-                sshagent(['ansible']) {
-                    sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline/home_lone/target/home_lone.war ec2-user@16.171.155.210:/home/ec2-user/tomcat-9/home_lone/'
-                }
-            }
-        }
-        }
     }
+}
+
